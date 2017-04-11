@@ -1,5 +1,6 @@
 # JavaScript 101
-## Basics of JavaScript:
+
+## Examples include:
 * Strings
 * Objects
 * Functions
