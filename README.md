@@ -12,4 +12,4 @@
 ## Usage
 * $ http-server
 * http://localhost:8080/
-* Open console in browser
+* Open console: ⌘ ⌥ J
