@@ -17,10 +17,10 @@ if (test === "look what I sdlogged") {
 // pop = prompt("give me a number");
 // popint = parseInt(pop);
 
-// if (popint === "NaN") {
+// if (popint == "NaN") {
 //   console.log("that's not a number");
 // } else {
-//   console.log(popint);
+//   console.log("give me a number: ", popint);
 // }
 
 
