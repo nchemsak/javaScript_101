@@ -81,8 +81,8 @@ console.log(myArray);
 myArray.pop();
 console.log(myArray);
 
-var thing = myArray.pop();
-console.log("pop on myArray", thing);
+// var thing = myArray.pop();
+// console.log("pop on myArray", thing);
 
 console.log(myArray);
 
@@ -284,10 +284,10 @@ console.log("theOneImLookingFor", theOneImLookingFor);
 
 for (var i = 0; i < annoyingSongs.length; i++) {
   var currentSong = annoyingSongs[i];
-  var title = "<h2>" + currentSong.title + "</h2>";
-  var title = "<h2>" + currentSong.album + "</h2>";
+  var title = "<h4>" + currentSong.title + "</h4>";
+  var album = "<h4>" + currentSong.album + "</h4>";
 
-  // theOneImLookingFor.innerHTML += "<h1>The most annoying songs ever: # " + (i + 1) + "</h1>" + title + album;
+  theOneImLookingFor.innerHTML += "<h2>Annoying song # " + (i + 1) + "</h2>" + title + album;
 
 }
 
@@ -360,11 +360,14 @@ var articleEl = document.getElementsByClassName("article-section");
 console.log("articleE1", articleEl);
 
 function handleSectionClick(MouseEvent) {
-  console.log(MouseEvent);
+  // console.log(MouseEvent);
   var elementText = MouseEvent.target.innerHTML;
+  // console.log("elementText: ", elementText);
   outputEl.innerHTML = "You hovered over the " + elementText + " section";
-
+  // return elementText;
 }
+
+
 
 for (var i = 0; i < articleEl.length; i++) {
   articleEl.item(i).addEventListener("mouseover", handleSectionClick); //this is the important line.  "mouseover" is the name of the event.  these are predefined.  the 2nd ("handleSectionClick") is the reference to a function.
@@ -537,12 +540,26 @@ colors.forEach(function(item) {
 
 
 //the forEach example above is the same as the below loop:
-var colors = ["red", "blue", "green", "yellow", "orange", "teal"];
+var colors = ["red", "blue", "green", "yellow", "orange", "teal", "green", "green", "green"];
 
 for (var i = 0; i < colors.length; i++) {
   var newColorString = "I like this color: " + colors[i];
   console.log(newColorString);
 }
+
+
+var colors2 = ["black", "blurple", "breen", "bellow", "borange", "beal"];
+
+var combine = colors.concat(colors2);
+console.log("combine: ", combine);
+
+var sort = combine.sort();
+console.log("sort: ", sort);
+
+let ones = Array(40).fill(1);
+console.log("ones: ", ones);
+
+
 
 
 // // The map method lets you create a new array after executing some logic on each item in the original array
@@ -594,6 +611,7 @@ var sum = numbers.reduce(function(hello, currr) {
 });
 console.log("sum", sum);
 console.log("");
+
 //same as:
 var numbers = [51, 10, 62, 4, 13, 9];
 var sum = 0;
@@ -681,29 +699,31 @@ console.log("chaining sum: ", integers2);
 
 
 
-var integers = [13, 25, 6, 7, 34, 90, 667];
-var integers2 = integers
-  .sort(function(a, b) {
-    console.log(".sort: ", a, b)
-    return b - a
-  })
+// var integers = [13, 25, 6, 7, 34, 90, 667];
+// var integers2 = integers.sort(function(a, b) {
 
-.filter(function(num) {
-  console.log(".filter: ", num)
-  return num <= 19
-})
+//   console.log(".sort: ", a, b);
+//   return b - a;
 
-.map(function(num) {
-  console.log(".map: ", num)
-  return ((num * 1.5) - 1)
-})
+// })
 
-.reduce(function(prev, curr) {
-  console.log("prev: ", prev, "curr: ", curr)
-  return prev + curr
-});
+// .filter(function(num) {
+//   // console.log(".filter: ", num);
+//   return num <= 19;
 
-console.log("chaining sum: ", integers2);
+// })
+
+// .map(function(num) {
+//   // console.log(".map: ", num);
+//   return ((num * 1.5) - 1);
+// })
+
+// .reduce(function(prev, curr) {
+//   // console.log("prev: ", prev, "curr: ", curr);
+//   return prev + curr;
+// })
+
+// console.log("chaining sum: ", integers2);
 
 
 
