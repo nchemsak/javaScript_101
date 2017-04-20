@@ -925,8 +925,8 @@ function combine(a, b, action) {
   return action(a, b);
 }
 
-var addResult = combine(1, 2, add1); //uses "add" function from previous example
-var subtractResult = combine(1, 2, subtract1); //uses "subtract" function from previous example
+// var addResult = combine(1, 2, add1); //uses "add" function from previous example
+// var subtractResult = combine(1, 2, subtract1); //uses "subtract" function from previous example
 
 console.log("add: " + addResult);
 console.log("subtract: " + subtractResult);
