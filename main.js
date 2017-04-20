@@ -921,12 +921,12 @@ console.log("add: ", add1(10, 5));
 
 
 // Write a function that takes 2 numbers and a function as arguments and returns the result.
-function combine(a, b, action) {
+function combine2(a, b, action) {
   return action(a, b);
 }
 
-// var addResult = combine(1, 2, add1); //uses "add" function from previous example
-// var subtractResult = combine(1, 2, subtract1); //uses "subtract" function from previous example
+var addResult = combine2(1, 2, add1); //uses "add" function from previous example
+var subtractResult = combine2(1, 2, subtract1); //uses "subtract" function from previous example
 
 console.log("add: " + addResult);
 console.log("subtract: " + subtractResult);
