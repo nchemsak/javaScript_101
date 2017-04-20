@@ -275,7 +275,6 @@ annoyingSongs.push(ganghamStyle);
 console.log("annoyingSongs", annoyingSongs);
 
 
-
 var songElements = document.getElementsByClassName("songs");
 console.log("songElements", songElements);
 
@@ -560,8 +559,6 @@ let ones = Array(40).fill(1);
 console.log("ones: ", ones);
 
 
-
-
 // // The map method lets you create a new array after executing some logic on each item in the original array
 
 // // split turns string into an array
@@ -699,145 +696,6 @@ console.log("chaining sum: ", integers2);
 
 
 
-// var integers = [13, 25, 6, 7, 34, 90, 667];
-// var integers2 = integers.sort(function(a, b) {
-
-//   console.log(".sort: ", a, b);
-//   return b - a;
-
-// })
-
-// .filter(function(num) {
-//   // console.log(".filter: ", num);
-//   return num <= 19;
-
-// })
-
-// .map(function(num) {
-//   // console.log(".map: ", num);
-//   return ((num * 1.5) - 1);
-// })
-
-// .reduce(function(prev, curr) {
-//   // console.log("prev: ", prev, "curr: ", curr);
-//   return prev + curr;
-// })
-
-// console.log("chaining sum: ", integers2);
-
-
-
-var annoyingSongs = [];
-
-var callMeMaybe = {
-  title: "Call Me Maybe",
-  artist: "Carly Rae Jepsen",
-  album: "Curiosity"
-};
-
-// annoyingSongs.push(callMeMaybe);
-
-
-var hampster = {
-  title: "The Hampsterdance Song",
-  artist: "Hampton the Hampster",
-  album: "The Hampsterdance Album"
-};
-annoyingSongs.push(callMeMaybe, hampster);
-
-
-console.log("annoyingSongs: ", annoyingSongs);
-
-console.log("annoyingSongs[1]: ", annoyingSongs[1].title);
-console.log("annoyingSongs[0].title: ", annoyingSongs[0].title);
-// console.log("currentSong: ", currentSong);
-// var title = "<h2>" + currentSong.title + "</h2>";
-// var title = "<h2>" + currentSong.album + "</h2>";
-
-// // theOneImLookingFor.innerHTML += "<h1>The most annoying songs ever: # " + (i+1) + "</h1>" + title + album;
-
-
-
-
-// var numberList = [1, 1, 2, 3, 5, 6, 6, 6, 7, 8, 1, 6, "Nick", "Doug", "Nick", "nick"];
-
-
-
-// function newArray(array, element) {
-//   let count = 0;
-//   for (i = 0; i < array.length; i++) {
-//     if (array[i] === element) {
-//       count++;
-//     }
-//   }
-//   return (Array(count).fill(element));
-// }
-
-// console.log("newArray(numberList, 8): ", newArray(numberList, 1));
-
-
-
-// function functionName(array, element) {
-//   count = 0;
-//   for (let i = 0; i < array.length; i++) {
-//     if (array[i] === element) {
-//       count++;
-//     }
-//   }
-//   return (Array(count).fill(element));
-// }
-
-
-
-// // let result = functionName(numberList, 6);
-// // console.log("result: ", result);
-
-
-
-
-
-// let nines = Array(20).fill(9);
-// let twos = Array(30).fill(2);
-// let nick = Array(24).fill("Nick");
-
-// let master = nines.concat(twos, nick);
-
-// console.log("master: ", master);
-
-// let sorted = master.sort();
-
-// console.log("sorted: ", sorted);
-
-
-
-// function arrayTest(array, item) {
-//   let count = 0;
-//   for (let i = 0; i < array.length; i++) {
-//     if (array[i] === item) {
-//       count++
-//     }
-//   }
-//   return (Array(count).fill(item));
-// }
-
-// console.log("arrayTest(numberList, 1): ", arrayTest(numberList, 6));
-
-// console.log("arrayTest(numberList, 1): ", arrayTest(numberList, 1));
-
-
-// let one = arrayTest(numberList, 6);
-// console.log("one: ", one);
-
-// let two = arrayTest(numberList, 2);
-// console.log("two: ", two);
-
-// let newest = one.concat(two);
-// console.log("newest: ", newest);
-
-
-// var sort = newest.sort();
-// console.log("sortArray: ", sort);
-
 
 function countNumberInArray(array, number) {
   let count = 0;
@@ -860,16 +718,6 @@ function createNewArray(array, number) {
 }
 
 
-
-// let Nick = countNumberInArray(numberList, "Nick");
-// console.log("How many Nick's in array?", Nick);
-
-
-// let nickArray = createNewArray(numberList, 6);
-// console.log("create Nick array", nickArray);
-
-
-
 function toObject(arr) {
   var rv = {};
   for (var i = 0; i < arr.length; ++i)
@@ -877,4 +725,3 @@ function toObject(arr) {
   return rv;
 }
 
-// console.log("toObject(numberList: ", toObject(numberList));
