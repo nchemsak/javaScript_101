@@ -1,0 +1,41 @@
+#wrapper {
+  background: red;
+}
+
+#brapper {
+  background: yellow;
+}
+
+.btn {
+  min-width: 135px;
+  min-height: 45px;
+  font-family: ‘Avenir Next’, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  color: #4D815B;
+  background-color: #FFF;
+  border: 2px solid #4D815B;
+  border-radius: 4px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.btn-solid {
+  min-width: 135px;
+  min-height: 45px;
+  font-family: ‘Avenir Next’, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  color: #FFF;
+  background-color: #4D815B;
+  border: 2px solid #4D815B;
+  border-radius: 4px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.year {
+  color: red;
+}
