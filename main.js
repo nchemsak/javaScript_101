@@ -3,26 +3,13 @@ var randomNumber = Math.floor(Math.random() * 6) + 1;
 console.log("random number: ", randomNumber);
 
 
-var test = "look what I logged";
-
-
 // if else
+var test = "look what I logged";
 if (test === "look what I sdlogged") {
-
   console.log("booyah");
 } else {
   console.log("fail");
 }
-
-// pop = prompt("give me a number");
-// popint = parseInt(pop);
-
-// if (popint == "NaN") {
-//   console.log("that's not a number");
-// } else {
-//   console.log("give me a number: ", popint);
-// }
-
 
 //How many hours in a year?
 var hoursInYear = 24 * 365;
@@ -725,3 +712,449 @@ function toObject(arr) {
   return rv;
 }
 
+
+
+
+
+
+//******************************************************************************
+//                          STRINGS
+//******************************************************************************
+
+// Change all Nick to Mary
+var string = "Hi, my name is Nick.  I have been Nick my whole life.  Nick's is my favorite name.";
+var newString = string.replace(/Nick/g, "Mary");
+console.log("newString: ", newString);
+
+//put string into DOM
+var thisOne = document.getElementById("insertHere");
+thisOne.innerHTML = newString;
+
+// repeat string 10 times
+console.log(newString.repeat(10));
+
+//******************************************************************************
+//                          ARRAYS
+//******************************************************************************
+
+// Create an array with 50 letter "r", 25 letter "b", 12 letter "x".  Put them in alphabetical order
+var rArray = Array(50).fill("r");
+var bArray = Array(25).fill("b");
+var xArray = Array(12).fill("x");
+
+var newArray = rArray.concat(bArray, xArray).sort();
+console.log("newArray: ", newArray);
+
+
+// Add 5 letter "n"'s to the array
+function addLetters(n) {
+  for (i = 0; i <= 5; i++) {
+    newArray.push(n);
+  }
+}
+addLetters("n");
+console.log("newArray: ", newArray);
+
+// Create another array with 25 number "4", 3 number "8" and list in decending order.
+var array4 = Array(25).fill(4);
+var array8 = Array(3).fill(8);
+var anotherNewArray = array4.concat(array8);
+var newerYet = anotherNewArray.concat(newArray).sort().reverse();
+console.log("newerYet: ", newerYet);
+
+// console.log("anotherNewArray: ", anotherNewArray);
+
+
+// Find the lowest number in an array, and find the highest number in an array
+var scores = [82, 78, 95, 100, 99, 55, 55, 20, 69, 100, 72, 78, 84, 78, 100, 65, 100000, 64, 99];
+
+// sort the array, reverse it and then find the number at index 0
+var lowestScore = scores.sort(function(a, b) {
+  return a - b;
+});
+console.log("Lowest number: ", lowestScore[0]);
+
+// sort the array, reverse it and then find the number at index 0
+var highestScore = scores.sort(function(a, b) {
+  return a - b;
+}).reverse();
+console.log("highest number: ", highestScore[0]);
+
+
+// Take the string "I love pizza in the morning" and put each letter as a
+// sperate item in a new array.
+var pizzaStr = "I love pizza in the morning";
+var pizzaArr = pizzaStr.split("");
+console.log("pizzaArr: ", pizzaArr);
+
+
+// Take the string "I love bologna" and reverse each letter, so it would read
+// "angolob evol I"
+// var colors = ["black", "plurple", "green", "yellow", "orange", "teal"];
+
+var bolognaStr = "I love bologna";
+var reverseStr = bolognaStr.split("").reverse().join("");
+console.log("reverseStr: ", reverseStr);
+
+
+// Take the string "I love bologna" and reverse the words to read
+//     "bologna love I"
+var reverseWords = bolognaStr.split(" ").reverse().join(" ");
+console.log("reverseWords: ", reverseWords);
+
+// Take an array of colors ["red", "blue", "green", "purple"] and reverse the order
+// Then, reverse each color’s letters to read ["der", "eulb", "neerg", "elprup"]
+
+var colorArr = ["red", "blue", "green", "purple"];
+var reverseArr = colorArr.map(function(color) {
+  return color.split("").reverse().join("");
+});
+console.log("reverseArr: ", reverseArr);
+
+//******************************************************************************
+//                          OBJECTS
+//******************************************************************************
+
+// Create an object called song1 and add a few keys and values.
+var song1 = {
+  title: "Your mom",
+  artist: "Nick",
+  year: 1999
+};
+
+
+// 2. Create another object called song2 and add a few keys and values.
+var song2 = {
+  title: "Your dad",
+  artist: "Madden",
+  year: 2000
+};
+console.log(song1, song2);
+
+
+// 3. Create and array with both songs and their key/values.
+var songs = [];
+songs.push(song1, song2);
+console.log("songs: ", songs);
+
+
+// 4. Output both songs to the DOM.
+var songElements = document.getElementsByClassName("arrayStuff");
+console.log("songElements", songElements);
+
+for (var i = 0; i < songs.length; i++) {
+  var currentSong = songs[i];
+  var title = "<h4 class = title>" + "title: " + currentSong.title + "</h4>";
+  var artist = "<h4 class = artist>" + "artist: " + currentSong.artist + "</h4>";
+  var year = "<h4 class = year>" + "year: " + currentSong.year + "</h4>";
+
+  songElements[0].innerHTML += "<h2>Song# " + (i + 1) + "</h2>" + title + artist + year;
+
+}
+
+//******************************************************************************
+//                          LOOPS
+//******************************************************************************
+// Create a loop that prints out all 10’s up to 500. so, 10, 20, 30, etc.
+for (i = 10; i <= 500; i += 10) {
+  console.log("i: ", i);
+}
+
+// Create an arry with all those same numbers
+
+(function numbers() {
+  var newArrayer = []
+  for (i = 10; i <= 500; i += 10) {
+    newArrayer.push(i);
+  }
+  console.log("newArray: ", newArrayer);
+})();
+
+
+//******************************************************************************
+//                          FUNCTIONS
+//******************************************************************************
+
+// Function Expressions must NOT start with “function”
+
+// //anonymous function expression
+// var a = function() {
+//     return 3;
+//   }
+//   //named function expression
+// var a = function bar() {
+//     return 3;
+//   }
+//   //self invoking function expression
+//   (function sayHello() {
+//     console.log("hello!");
+//   })();
+
+
+// Write a simple function DECLARATION that adds 2 numbers.
+// A Function Declaration defines a named function variable without requiring variable assignment.
+function add(a, b) {
+  return a + b
+};
+console.log("add(1,2): ", add(10, 2));
+
+
+// Write another function DECLARATION that subtracts 2 numbers.
+function subtract(a, b) {
+  return a - b
+};
+console.log("subtract(10,2): ", subtract(10, 2));
+
+
+// Write a simple function EXPRESSION that subtracts 2 numbers.
+var subtract1 = function(a, b) {
+  return a - b
+};
+console.log(subtract1(10, 5));
+
+
+// Write another simple function EXPRESSION that adds 2 numbers.
+var add1 = function(a, b) {
+  return a + b
+};
+console.log("add: ", add1(10, 5));
+
+
+// Write a function that takes 2 numbers and a function as arguments and returns the result.
+function combine(a, b, action) {
+  return action(a, b);
+}
+
+var addResult = combine(1, 2, add1); //uses "add" function from previous example
+var subtractResult = combine(1, 2, subtract1); //uses "subtract" function from previous example
+
+console.log("add: " + addResult);
+console.log("subtract: " + subtractResult);
+
+
+// Write a function that outputs every possible die combination of a 10 sided
+// die when rolled 3 times.
+
+function threeDiceRoll(i, j, k) {
+  var count = 0;
+  for (i = 1; i <= 10; i++) {
+    for (j = 1; j <= 10; j++) {
+      for (k = 1; k <= 10; k++) {
+        console.log(i, j, k);
+        count++;
+      }
+    }
+  }
+  console.log("count: ", count);
+}
+
+threeDiceRoll();
+
+
+//******************************************************************************
+//                          OTHERS
+//******************************************************************************
+
+// Capitalize the first letter of each item in this array: var planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
+var planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
+
+var el = document.getElementById("planets");
+var capitalLetters = planets.map(function(capital) {
+  return capital.charAt(0).toUpperCase() + capital.slice(1);
+});
+console.log("capitalLetters: ", capitalLetters);
+
+
+// 6. Return all planets that contain the letter 'e'
+
+var filtered = planets.filter(function(e) {
+  return e.charAt() === "e";
+});
+// return filtered;
+console.log("filtered: ", filtered);
+
+
+
+//sonnet
+
+// Take the contents of the sonnet div in the html and place it in a variable
+var sonnet = document.getElementById("sonnet").innerHTML;
+console.log("Sonnet: ", sonnet);
+
+// Find and output the starting position of the word "orphans"
+var orphansPosition = sonnet.indexOf("orphans");
+console.log("Starting position of Orphans: " + orphansPosition);
+
+// Output the number of characters in the sonnet
+var numberOfChar = sonnet.length;
+console.log("Length of Sonnet: " + numberOfChar);
+
+// Replace the first occurance of the string "winter" with "yuletide"
+var replaceWords = sonnet.replace("winter", "yuletide");
+console.log("Replace words: " + replaceWords);
+
+// Replace all occurances of the string "the" with "a large"
+var allReplace = replaceWords.replace(/the /gi, "a large ");
+console.log("Replace all 'the': " + allReplace);
+
+// Set the content of the sonnet div with the new string
+var insert = document.getElementById("sonnet");
+insert.innerHTML = allReplace;
+
+
+//fizzbuzz
+for (var i = 1; i <= 100; i++) {
+  if (i % 15 == 0)
+    console.log("FizzBuzz");
+  else if (i % 3 == 0)
+    console.log("Fizz");
+  else if (i % 5 == 0)
+    console.log("Buzz");
+  else
+    console.log(i);
+}
+
+console.log("break: ");
+
+
+//basic prototypal inheritance example
+
+// base function
+let Robot = function() {
+  this.name = null;
+  this.health = null;
+  this.damage = null;
+  this.property = null;
+};
+
+// constructors
+let Drone = function() {
+  let droneBottomHealth = 80;
+  let droneTopHealth = 90;
+  let droneBottomDamage = 10;
+  let droneTopDamage = 15;
+  this.health = Math.floor(Math.random() * (droneTopHealth - droneBottomHealth + 1)) + droneBottomHealth;
+  this.damage = Math.floor(Math.random() * (droneTopDamage - droneBottomDamage + 1)) + droneBottomDamage;
+  this.property = "Aerial";
+};
+Drone.prototype = new Robot();
+
+let BiPedal = function() {
+  let biBottomHealth = 70;
+  let biTopHealth = 80;
+  let biBottomDamage = 5;
+  let bitTopDamage = 10;
+  this.health = Math.floor(Math.random() * (biTopHealth - biBottomHealth + 1)) + biBottomHealth;
+  this.damage = Math.floor(Math.random() * (bitTopDamage - biBottomDamage + 1)) + biBottomDamage;
+  this.property = "Ground";
+};
+BiPedal.prototype = new Robot();
+
+
+//******************************************************************************
+//                          hash table
+//******************************************************************************
+var h = {};
+
+h['one'] = 1;
+h['two'] = 2;
+h['three'] = 3;
+console.log("h: ", h);
+// show the values stored
+for (var k in h) {
+  // use hasOwnProperty to filter out keys from the Object.prototype
+  if (h.hasOwnProperty(k)) {
+    console.log('key is: ' + k + ', value is: ' + h[k]);
+  }
+}
+
+
+function HashTable(obj) {
+  this.length = 0;
+  this.items = {};
+  for (var p in obj) {
+    if (obj.hasOwnProperty(p)) {
+      this.items[p] = obj[p];
+      this.length++;
+    }
+  }
+
+  this.setItem = function(key, value) {
+    var previous = undefined;
+    if (this.hasItem(key)) {
+      previous = this.items[key];
+    } else {
+      this.length++;
+    }
+    this.items[key] = value;
+    return previous;
+  }
+
+  this.getItem = function(key) {
+    return this.hasItem(key) ? this.items[key] : undefined;
+  }
+
+  this.hasItem = function(key) {
+    return this.items.hasOwnProperty(key);
+  }
+
+  this.removeItem = function(key) {
+    if (this.hasItem(key)) {
+      previous = this.items[key];
+      this.length--;
+      delete this.items[key];
+      return previous;
+    } else {
+      return undefined;
+    }
+  }
+
+  this.keys = function() {
+    var keys = [];
+    for (var k in this.items) {
+      if (this.hasItem(k)) {
+        keys.push(k);
+      }
+    }
+    return keys;
+  }
+
+  this.values = function() {
+    var values = [];
+    for (var k in this.items) {
+      if (this.hasItem(k)) {
+        values.push(this.items[k]);
+      }
+    }
+    return values;
+  }
+
+  this.each = function(fn) {
+    for (var k in this.items) {
+      if (this.hasItem(k)) {
+        fn(k, this.items[k]);
+      }
+    }
+  }
+
+  this.clear = function() {
+    this.items = {}
+    this.length = 0;
+  }
+}
+var h = new HashTable({
+  one: 1,
+  two: 2,
+  three: 3,
+  "i'm no 4": 4
+});
+
+console.log('original length: ' + h.length);
+console.log('value of key "one": ' + h.getItem('one'));
+console.log('has key "foo"? ' + h.hasItem('foo'));
+console.log('previous value of key "foo": ' + h.setItem('foo', 'bar'));
+console.log('length after setItem: ' + h.length);
+console.log('value of key "foo": ' + h.getItem('foo'));
+console.log('value of key "im no 4 ": ' + h.getItem("im no 4"));
+h.clear();
+console.log('length after clear: ' + h.length);
