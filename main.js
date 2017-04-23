@@ -774,6 +774,10 @@ var lowestScore = scores.sort(function(a, b) {
 });
 console.log("Lowest number: ", lowestScore[0]);
 
+// you can also use ES6 arrow functions:
+var lowestScore2 = scores.sort((a, b) => a - b);
+console.log("lowestScore2[0]: ", lowestScore2[0]);
+
 // sort the array, reverse it and then find the number at index 0
 var highestScore = scores.sort(function(a, b) {
   return a - b;
@@ -876,7 +880,6 @@ for (i = 10; i <= 500; i += 10) {
 //******************************************************************************
 
 // Function Expressions must NOT start with “function”
-
 // //anonymous function expression
 // var a = function() {
 //     return 3;
@@ -921,12 +924,12 @@ console.log("add: ", add1(10, 5));
 
 
 // Write a function that takes 2 numbers and a function as arguments and returns the result.
-function combine2(a, b, action) {
+function combineFunct(a, b, action) {
   return action(a, b);
-}
+};
 
-var addResult = combine2(1, 2, add1); //uses "add" function from previous example
-var subtractResult = combine2(1, 2, subtract1); //uses "subtract" function from previous example
+var addResult = combineFunct(1, 2, add); //uses "add" function from previous example
+var subtractResult = combineFunct(1, 2, subtract); //uses "subtract" function from previous example
 
 console.log("add: " + addResult);
 console.log("subtract: " + subtractResult);
@@ -950,7 +953,18 @@ function threeDiceRoll(i, j, k) {
 
 threeDiceRoll();
 
+function person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.yearOfBirth = bornYear;
+}
 
+function bornYear() {
+  return 2017 - this.age;
+}
+
+var pers = new person("A", 22);
+console.log("pers.yearOfBirth(): ", pers.yearOfBirth());
 //******************************************************************************
 //                          OTHERS
 //******************************************************************************
@@ -961,19 +975,26 @@ var planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus
 var el = document.getElementById("planets");
 var capitalLetters = planets.map(function(capital) {
   return capital.charAt(0).toUpperCase() + capital.slice(1);
+  // or
+  // return capital[0].toUpperCase() + capital.slice(1);
+
 });
 console.log("capitalLetters: ", capitalLetters);
 
 
 // 6. Return all planets that contain the letter 'e'
 
-var filtered = planets.filter(function(e) {
-  return e.charAt() === "e";
+var filtered = capitalLetters.filter(function(e) {
+  return e.toLowerCase().indexOf("e") > -1;
 });
-// return filtered;
 console.log("filtered: ", filtered);
 
+// 7.1 output filtered planets to the DOM:
 
+filtered.forEach(function(item) {
+  var newPlanetString = item;
+  el.innerHTML += newPlanetString + "<br>" + " ";
+});
 
 //sonnet
 
@@ -1158,3 +1179,662 @@ console.log('value of key "foo": ' + h.getItem('foo'));
 console.log('value of key "im no 4 ": ' + h.getItem("im no 4"));
 h.clear();
 console.log('length after clear: ' + h.length);
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+//            Prototypal Inheritence
+// -------------------------------------------------------------------------
+var alien = {
+  kind: 'alien',
+  skin: 'green'
+}
+
+var person = {
+  kind: 'person'
+}
+
+var zog = Object.create(alien);
+
+// console.log(person.isPrototypeOf(zog)); //false
+// console.log(alien.isPrototypeOf(zog)); //true
+
+console.log("person: ", person);
+console.log("alien: ", alien);
+console.log("zog: ", zog);
+console.log("Object.getPrototypeOf(zog): ", Object.getPrototypeOf(zog));
+
+
+// -------------------------------------------------------------------------
+// Event Delegation used with self invoking anonymous function
+// -------------------------------------------------------------------------
+(function() {
+  document.getElementById("parent-list").addEventListener("click", function(e) {
+    if (e.target && e.target.nodeName === "LI") {
+      console.log("e.target.nodeName: ", e.target.nodeName);
+      console.log("e.target.outerText: ", e.target.outerText);
+    }
+  })
+})();
+
+
+// -------------------------------------------------------------------------
+// Document Fragment with self invoking anonymous function
+// -------------------------------------------------------------------------
+(function() {
+  var div = document.getElementById('parent-list');
+
+  var el;
+  var i = 1;
+  var fragment = document.createDocumentFragment();
+
+  while (i <= 20) {
+    el = document.createElement('li');
+    el.innerText = 'This is my list item number ' + i;
+    fragment.appendChild(el);
+    i++;
+  }
+  // console.log("fragment: ", fragment);
+  div.appendChild(fragment);
+})();
+
+
+// -------------------------------------------------------------------------
+// nodeList
+// -------------------------------------------------------------------------
+var div_nodes = document.getElementsByTagName("div");
+console.log("div_nodes: ", div_nodes);
+
+var button_nodes = document.getElementsByTagName("button");
+console.log("button_nodes: ", button_nodes);
+
+
+// -------------------------------------------------------------------------
+// global "this" refers to the window object
+// -------------------------------------------------------------------------
+this.console.log("hi");
+// is the same as
+window.console.log("hi");
+// is the same as
+console.log("hi");
+
+
+// -------------------------------------------------------------------------
+// Callback function - passing an anonymous function (a function without a name)
+// to the forEach method as a parameter.
+// -------------------------------------------------------------------------
+var friends = ["Mike", "Stacy", "Andy", "Rick"];
+friends.forEach(function(eachName, index) {
+  console.log(index + 1 + ". " + eachName); // 1. Mike, 2. Stacy, 3. Andy, 4. Rick​
+});
+
+
+// -------------------------------------------------------------------------
+// Closure - You create a closure by adding a function inside another function.
+// A closure is an inner function that has access to the outer (enclosing) function’s variables—scope chain.
+// -------------------------------------------------------------------------
+function showName(firstName, lastName) {
+  var nameIntro = "Your name is ";
+
+  function makeFullName() {
+    return nameIntro + firstName + " " + lastName;
+  }
+  return makeFullName();
+}
+console.log(showName("Michael", "Jackson"));
+
+
+// ************************************************************************
+// ************************************************************************
+//            CODING CHALLENGES
+// ************************************************************************
+// ************************************************************************
+
+
+// -------------------------------------------------------------------------
+// 1.     Find duplicates
+// -------------------------------------------------------------------------
+
+// function find_dup_cities(string) {
+
+//   let splitString = string.split("\n").filter(Boolean);
+//   let uniqueCitiesOutput = splitString.filter(function(currentValue, index, arr) {
+//     if (splitString.indexOf(currentValue) === index) {
+//       // return splitString.indexOf(currentValue) === index;
+//        console.log(currentValue);
+//     }
+//   });
+//   // console.log("UNIQUE CITIES OUTPUT: ", uniqueCitiesOutput.toString().replace(/,/g, '\n'));
+// }
+
+// var http = require('http');
+// var options = {
+//   host: 'themayesfamily.com',
+//   path: '/other.txt'
+// };
+
+// var callback = function(response) {
+//   var str = '';
+//   response.on('data', function(chunk) {
+//     str = chunk.toString('utf8');
+//   });
+//   response.on('end', function() {
+//     find_dup_cities(str);
+//   });
+// }
+
+// http.request(options, callback).end();
+
+
+// -------------------------------------------------------------------------
+// 1.     Check to see if array has duplicates - True or False
+// -------------------------------------------------------------------------
+// The Set object lets you store unique values of any type, whether primitive values or object references.
+
+function testy(array) {
+  console.log("array.length: ", array.length);  //this is the length of the array
+  console.log("new Set.size: ", (new Set(array)).size);  //this is the length of the new Set, which is unique values of the array.
+}
+
+function hasDuplicates(array) {
+  // console.log((new Set(array)).size !== array.length);
+  return (new Set(array)).size !== array.length;
+}
+
+var dups = [1, 2, 3, 4, 5, 5, 5, 5, 7, 8]; //true
+var noDups = [1, 2, 3, 4, 5, 6, 7]; //false
+
+testy(dups);
+console.log(new Set(dups));
+console.log("Has Duplicates? TRUE: ", hasDuplicates(dups));
+console.log("Has Duplicates? FALSE: ", hasDuplicates(noDups));
+
+
+
+// -------------------------------------------------------------------------
+//                2. Linked List
+// -------------------------------------------------------------------------
+// basic example:
+
+var node1 = {
+  data: null,
+  next: null
+};
+
+var node2 = {
+  data: null,
+  next: null
+};
+
+var node3 = {
+  data: null,
+  next: null
+};
+
+node1.data = "data1";
+node2.data = "data2";
+node3.data = "data3";
+node1.next = node2;
+node2.next = node3;
+
+console.log("node1: ", node1);
+console.log("node2: ", node2);
+console.log("node3: ", node3);
+
+// -------------------------------------------------------------------------
+
+//reverse a singly linked list
+
+function LinkedList() {
+  this.head = null;
+}
+
+LinkedList.prototype.push = function(val) {
+  var node = {
+    value: val,
+    next: null
+  }
+  if (!this.head) {
+    this.head = node;
+  } else {
+    current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = node;
+  }
+}
+
+var sll = new LinkedList();
+
+//push node
+sll.push(2);
+sll.push(3);
+sll.push(4);
+
+//check values by traversing LinkedList
+console.log("sll.head: ", sll.head);
+console.log("sll.head.next: ", sll.head.next);
+
+// -------------------------------------------------------------------------
+
+// reverse linked list
+function reversesll(sll) {
+
+  if (!sll.head || !sll.head.next) return sll;
+
+  var nodes = [],
+    current = sll.head;
+  //storing all the nodes in an array
+  while (current) {
+    nodes.push(current);
+    current = current.next;
+  }
+
+  var reversedLL = new LinkedList();
+
+  reversedLL.head = nodes.pop();
+  current = reversedLL.head;
+
+  var node = nodes.pop();
+  //make sure to make next of the newly inserted node to be null
+  //other wise the last node of your SLL will retain its old next.
+  while (node) {
+    node.next = null;
+    current.next = node;
+
+    current = current.next;
+    node = nodes.pop();
+  }
+  return reversedLL;
+}
+
+// // //test it
+reversesll(sll);
+console.log("reversesll(sll): ", reversesll(sll));
+// // {head: {value:5, next:{value: 4, next: {value: 3, next: {value:2, next:{value:1, next: null}}}}}}
+
+// -------------------------------------------------------------------------
+//                PALINDROME
+// -------------------------------------------------------------------------
+
+//Is string a palindrome? - solution 1 - SLOWER
+var palindrome_string = "abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba";
+
+function checkPalindrome(str) {
+  return str == str.split('').reverse().join('');
+}
+
+console.log("checkPalindrome(palindrome_string): ", checkPalindrome(palindrome_string));
+
+//Is string a palindrome? - solution 2 - FASTEST
+function checkPalindrome2(str) {
+  var i = str.length - 1;
+  var k = 0;
+  while (i > k) {
+    if (str.charAt(k++) !== str.charAt(i--)) return false;
+  }
+  return true;
+}
+console.log("checkPalindrome2(palindrome_string: ", checkPalindrome2(palindrome_string));
+
+// -------------------------------------------------------------------------
+//                FIBONACCI
+// -------------------------------------------------------------------------
+
+// solution #1 (recursive)
+var looping = function(n) {
+  var a = 0,
+    b = 1,
+    f = 1;
+
+  for (var i = 2; i <= n; i++) {
+    f = a + b;
+    a = b;
+    b = f;
+  }
+  return f;
+};
+console.log("looping(9): ", looping(9));
+
+
+// solution #2 (non-recursive)
+var Fib = function(n) {
+  if (n <= 1)
+    return n;
+  return Fib(n - 1) + Fib(n - 2);
+}
+console.log("Fib(9): ", Fib(9));
+
+
+// solution #3 (non-recursive) to an array
+var fibonacci_series = function(n) {
+  if (n === 1) {
+    return [0, 1];
+  } else {
+    var s = fibonacci_series(n - 1);
+    s.push(s[s.length - 1] + s[s.length - 2]);
+    return s;
+  }
+};
+console.log(fibonacci_series(9));
+
+
+// solution #4 (recursive) and output to DOM using DOM fragment
+function getFibonacci(num) {
+  var output = ''
+  var oldNumber = -1
+  var newNumber = 1
+  for (i = 0; i < num; i++) {
+    var prevOldNumber = newNumber
+    newNumber = oldNumber + newNumber
+    oldNumber = prevOldNumber
+    output = output + newNumber + ' '
+      //DOM output
+    var div = document.getElementById('fib-list');
+    var fragment = document.createDocumentFragment();
+    el = document.createElement('li');
+    el.innerText = output;
+    fragment.appendChild(el);
+    div.appendChild(fragment);
+  }
+  return output
+}
+console.log(getFibonacci(15));
+
+
+
+
+// -------------------------------------------------------------------------
+//                FACTORAL SEQUENCE
+// -------------------------------------------------------------------------
+
+// recursive example 1
+function factorial(n) {
+  return n <= 1 ? 1 : n * factorial(n - 1);
+}
+console.log("factorial(4): ", factorial(4));
+
+
+//  example 2
+function factorial2(n) {
+  var f = [];
+  if (n == 0 || n == 1)
+    return 1;
+  if (f[n] > 0)
+    return f[n];
+  return f[n] = factorial2(n - 1) * n;
+}
+console.log("factorial2(4): ", factorial2(4));
+
+
+
+//  example 3 - RECURSIVE
+function rFact(n) {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * rFact(n - 1);
+  }
+}
+console.log("rFact(4): ", rFact(4));
+
+
+// example 3 - ITERATIVE
+function sFact(n) {
+  var rval = 1;
+  for (var i = 2; i <= n; i++)
+    rval = rval * i;
+  return rval;
+}
+console.log("sFact(4): ", sFact(4));
+
+// -------------------------------------------------------------------------
+//                FLOOD FILL
+// -------------------------------------------------------------------------
+// The flood-fill algorithm takes three parameters: a start node, a target color, and a replacement color.
+// The algorithm looks for all nodes in the array that are connected to the start node by a path of the target color and changes them to the replacement color.
+// There are many ways in which the flood-fill algorithm can be structured, but they all make use of a queue or stack data structure, explicitly or implicitly.
+
+// Depending on whether we consider nodes touching at the corners connected or not,
+// we have two variations: eight-way and four-way respectively.
+
+// Don't use recursion.  BUILD A CUSTOM STACK
+// Instead of letting JavaScript handle the stack for us, we can create our own using a simple JavaScript array.
+// Since an array has no limit on how many items it can contain, we can have an "infinitely" large stack that we control ourself.
+
+
+
+(function() {
+  var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d"),
+    dimensions = 512,
+    mapSize = 8,
+    unitSize = dimensions / mapSize;
+
+  canvas.width = canvas.height = dimensions;
+
+  // preset data, change mapSize to 8 and call the floodfill method map to use this
+  var map = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 1, 1, 1, 1, 0],
+    [0, 0, 1, 0, 0, 0, 1, 0],
+    [0, 0, 1, 0, 0, 0, 1, 0],
+    [0, 0, 1, 0, 0, 0, 1, 0],
+    [0, 0, 0, 1, 0, 0, 1, 0],
+    [0, 0, 0, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+
+  ];
+
+  function drawMap(mapData) {
+    for (var x = 0; x < mapSize; x++) {
+      for (var y = 0; y < mapSize; y++) {
+        ctx.fillStyle = "rgb(0,200,0)";
+        if (mapData[x][y] == 1) {
+          ctx.fillStyle = "rgb(200,0,0)";
+        } else if (mapData[x][y] > 1) {
+          ctx.fillStyle = "rgb(0,0,200)";
+        }
+        ctx.fillRect(x * unitSize, y * unitSize, unitSize, unitSize);
+      }
+    }
+  }
+
+  // Flood-fill (node, targetColor, replacementColor):
+
+  function floodFill(mapData, x, y, targetColor, replacementColor) {
+    var mapWidth = mapData.length,
+      mapHeight = mapData[0].length;
+
+    if (targetColor == null) {
+      targetColor = mapData[x][y];
+    }
+
+    if (mapData[x][y] !== targetColor) {
+      return true;
+    }
+
+    mapData[x][y] = replacementColor;
+
+    if (x > 0) { // left
+      floodFill(mapData, x - 1, y, targetColor, replacementColor);
+    }
+    if (y > 0) { // up
+      floodFill(mapData, x, y - 1, targetColor, replacementColor);
+    }
+    if (x < mapWidth - 1) { // right
+      floodFill(mapData, x + 1, y, targetColor, replacementColor);
+    }
+    if (y < mapHeight - 1) { // down
+      floodFill(mapData, x, y + 1, targetColor, replacementColor);
+    }
+  }
+
+  floodFill(map, 3, 3, null, 2);
+  drawMap(map);
+})();
+
+
+
+
+// -------------------------------------------------------------------------
+//                FLOOD FILL part 2
+// -------------------------------------------------------------------------
+
+
+(function() {
+  var lastTime = 0;
+  var vendors = ['ms', 'moz', 'webkit', 'o'];
+  for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+    window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+    window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+  }
+
+  if (!window.requestAnimationFrame)
+    window.requestAnimationFrame = function(callback, element) {
+      var currTime = new Date().getTime();
+      var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+      var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+        timeToCall);
+      lastTime = currTime + timeToCall;
+      return id;
+    };
+
+  if (!window.cancelAnimationFrame)
+    window.cancelAnimationFrame = function(id) {
+      clearTimeout(id);
+    };
+}());
+
+(function() {
+  var canvas, context = null;
+
+  var fill = function(x, y) {
+    var image = context.getImageData(x, y, 1, 1);
+    var original = image.data;
+    var inverse = [255 - original[0], 255 - original[1], 255 - original[2], original[3]];
+
+    var queue = [];
+    queue.push({ "x": x, "y": y });
+
+    var workThunk = function() {
+      var counter = 0;
+      while (queue.length && counter < 30) {
+        workOnPixel();
+        counter++;
+      }
+      if (queue.length) {
+        requestAnimationFrame(workThunk);
+      }
+    };
+
+    var workOnPixel = function() {
+      var point = queue.pop();
+      image = context.getImageData(point.x, point.y, 1, 1);
+      var pixel = image.data;
+
+      if (pixel[0] == original[0] &&
+        pixel[1] == original[1] &&
+        pixel[2] == original[2] &&
+        pixel[3] == original[3]) {
+
+        pixel[0] = inverse[0];
+        pixel[1] = inverse[1];
+        pixel[2] = inverse[2];
+        pixel[3] = inverse[3];
+        context.putImageData(image, point.x, point.y);
+
+        if (point.x > 0) {
+          queue.push({ "x": point.x - 1, "y": point.y });
+        }
+        if (point.y > 0) {
+          queue.push({ "x": point.x, "y": point.y - 1 });
+        }
+        if (point.x < canvas.width) {
+          queue.push({ "x": point.x + 1, "y": point.y });
+        }
+        if (point.y < canvas.height) {
+          queue.push({ "x": point.x, "y": point.y + 1 });
+        }
+      }
+    };
+
+    requestAnimationFrame(workThunk);
+  };
+
+  $(function() {
+    canvas = document.getElementById("canvas2");
+    context = canvas.getContext("2d");
+    $("#canvas2").click(function(event) {
+      fill(event.offsetX, event.offsetY);
+    });
+
+    var img = new Image();
+    img.onload = function() {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      context.drawImage(this, 0, 0);
+    };
+    img.src = "them.png";
+  });
+
+}());
+
+
+// -------------------------------------------------------------------------
+//                FLOOD FILL part 3
+// -------------------------------------------------------------------------
+var Stack = [];
+
+function floodFill(x, y) {
+  fillPixel(x, y);
+
+  while (Stack.length > 0) {
+    toFill = Stack.pop();
+    fillPixel(toFill[0], toFill[1]);
+  }
+}
+
+function fillPixel(x, y) {
+  if (!alreadyFilled(x, y)) fill(x, y);
+
+  if (!alreadyFilled(x, y - 1)) Stack.push([x, y - 1]);
+  if (!alreadyFilled(x + 1, y)) Stack.push([x + 1, y]);
+  if (!alreadyFilled(x, y + 1)) Stack.push([x, y + 1]);
+  if (!alreadyFilled(x - 1, y)) Stack.push([x - 1, y]);
+}
+
+function fill(x, y) {
+  // this function will actually change the color of our box
+}
+
+function alreadyFilled(x, y) {
+  // this functions checks to see if our square has been filled already
+}
+
+
+
+var obj = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+for (var prop in obj) {
+  console.log('obj.' + prop, '=', obj[prop]);
+}
+
+var person = {
+  name: "nick",
+  married: true,
+  hispanic: false
+};
+
+for (var feature in person) {
+  console.log("feature, person[feature]: ", feature, ':', person[feature]);
+}
