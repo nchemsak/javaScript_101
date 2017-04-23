@@ -1179,6 +1179,15 @@ console.log('value of key "foo": ' + h.getItem('foo'));
 console.log('value of key "im no 4 ": ' + h.getItem("im no 4"));
 h.clear();
 console.log('length after clear: ' + h.length);
+
+
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// ----------------------More Advanced JS-----------------------------------
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
@@ -1186,6 +1195,9 @@ console.log('length after clear: ' + h.length);
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
+
+
+
 // -------------------------------------------------------------------------
 //            Prototypal Inheritence
 // -------------------------------------------------------------------------
@@ -1275,7 +1287,8 @@ friends.forEach(function(eachName, index) {
 
 // -------------------------------------------------------------------------
 // Closure - You create a closure by adding a function inside another function.
-// A closure is an inner function that has access to the outer (enclosing) function’s variables—scope chain.
+// A closure is an inner function that has access to the outer (enclosing)
+// function’s variables—scope chain.
 // -------------------------------------------------------------------------
 function showName(firstName, lastName) {
   var nameIntro = "Your name is ";
@@ -1336,8 +1349,8 @@ console.log(showName("Michael", "Jackson"));
 // The Set object lets you store unique values of any type, whether primitive values or object references.
 
 function testy(array) {
-  console.log("array.length: ", array.length);  //this is the length of the array
-  console.log("new Set.size: ", (new Set(array)).size);  //this is the length of the new Set, which is unique values of the array.
+  console.log("array.length: ", array.length); //this is the length of the array
+  console.log("new Set.size: ", (new Set(array)).size); //this is the length of the new Set, which is unique values of the array.
 }
 
 function hasDuplicates(array) {
@@ -1462,7 +1475,7 @@ console.log("reversesll(sll): ", reversesll(sll));
 //                PALINDROME
 // -------------------------------------------------------------------------
 
-//Is string a palindrome? - solution 1 - SLOWER
+//Is string a palindrome?
 var palindrome_string = "abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba";
 
 function checkPalindrome(str) {
@@ -1471,16 +1484,6 @@ function checkPalindrome(str) {
 
 console.log("checkPalindrome(palindrome_string): ", checkPalindrome(palindrome_string));
 
-//Is string a palindrome? - solution 2 - FASTEST
-function checkPalindrome2(str) {
-  var i = str.length - 1;
-  var k = 0;
-  while (i > k) {
-    if (str.charAt(k++) !== str.charAt(i--)) return false;
-  }
-  return true;
-}
-console.log("checkPalindrome2(palindrome_string: ", checkPalindrome2(palindrome_string));
 
 // -------------------------------------------------------------------------
 //                FIBONACCI
