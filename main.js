@@ -214,7 +214,6 @@ console.log("Does it work with . notation?", song[myMonkey]);
 console.log(Object.keys(song));
 
 
-
 // ################### WINDOW OBJECT ###############################
 // this will list all the window Objects in the console.log
 
@@ -282,7 +281,6 @@ for (var i = 0; i < annoyingSongs.length; i++) {
 // #                                     FUNCTIONS                                     #
 // ############################################################################################
 
-
 // Performs an action, but caluclates/returns no value
 //function expression
 var returnNothing = function() {
@@ -334,12 +332,9 @@ console.log("addResult function: " + addResult);
 console.log("subtractResult function: " + subtractResult);
 
 
-
-
 // ############################################################################################
 // #               EVENT HANDLERS  and event listeners                         #
 // ############################################################################################
-
 
 var outputEl = document.getElementById("output-target")
 var articleEl = document.getElementsByClassName("article-section");
@@ -352,7 +347,6 @@ function handleSectionClick(MouseEvent) {
   outputEl.innerHTML = "You hovered over the " + elementText + " section";
   // return elementText;
 }
-
 
 
 for (var i = 0; i < articleEl.length; i++) {
@@ -379,9 +373,6 @@ header.addEventListener("mouseover", handleHeaderMouseOver);
 header.addEventListener("mouseleave", handleHeaderMouseOver);
 
 
-
-
-
 //this one's kind of/close to working
 header.addEventListener("mouseover", handleHeaderMouseOver);
 header.addEventListener("mouseleave", handleHeaderMouseOver);
@@ -398,10 +389,7 @@ fieldEl.addEventListener("keyup", function(event) {
 // you can toggle, move, add
 //need examples here:
 
-
-
 ///event bubbling
-
 
 
 // document.getElementById("card--1").addEventListener("click", function(event)
@@ -411,12 +399,9 @@ fieldEl.addEventListener("keyup", function(event) {
 // )
 
 
-
-
 // ############################################################################################
 // #               strings                             #
 // ############################################################################################
-
 
 //this will find the capital letter T in the phrase and tell you its position
 var phrase = "There is a dog and blah blah words and a phrase and another dog";
@@ -445,7 +430,6 @@ var newGreeting = greeting.slice(1, 8);
 console.log("new Greeting: ", newGreeting);
 
 
-
 var upper = phrase.toUpperCase();
 console.log("upper: ", upper);
 var phraseSplit = phrase.split(" ");
@@ -459,7 +443,6 @@ console.log("upperCase: ", upperGreeting);
 //combining variables
 var text3 = upperGreeting + " " + phrase;
 console.log(text3);
-
 
 
 // ############################################################################################
@@ -512,7 +495,6 @@ console.log("new fruit: ", newFruits);
 // ############################################################################################
 // #               Arrays  part 2                            #
 // ############################################################################################
-
 
 
 // The forEach method is equivalent to using a for loop to interate over items in the array
@@ -711,10 +693,6 @@ function toObject(arr) {
     rv[i] = arr[i];
   return rv;
 }
-
-
-
-
 
 
 //******************************************************************************
@@ -1303,44 +1281,9 @@ console.log(showName("Michael", "Jackson"));
 
 // ************************************************************************
 // ************************************************************************
-//            CODING CHALLENGES
+//            CODING PRACTICE
 // ************************************************************************
 // ************************************************************************
-
-
-// -------------------------------------------------------------------------
-// 1.     Find duplicates
-// -------------------------------------------------------------------------
-
-// function find_dup_cities(string) {
-
-//   let splitString = string.split("\n").filter(Boolean);
-//   let uniqueCitiesOutput = splitString.filter(function(currentValue, index, arr) {
-//     if (splitString.indexOf(currentValue) === index) {
-//       // return splitString.indexOf(currentValue) === index;
-//        console.log(currentValue);
-//     }
-//   });
-//   // console.log("UNIQUE CITIES OUTPUT: ", uniqueCitiesOutput.toString().replace(/,/g, '\n'));
-// }
-
-// var http = require('http');
-// var options = {
-//   host: 'themayesfamily.com',
-//   path: '/other.txt'
-// };
-
-// var callback = function(response) {
-//   var str = '';
-//   response.on('data', function(chunk) {
-//     str = chunk.toString('utf8');
-//   });
-//   response.on('end', function() {
-//     find_dup_cities(str);
-//   });
-// }
-
-// http.request(options, callback).end();
 
 
 // -------------------------------------------------------------------------
@@ -1365,7 +1308,6 @@ testy(dups);
 console.log(new Set(dups));
 console.log("Has Duplicates? TRUE: ", hasDuplicates(dups));
 console.log("Has Duplicates? FALSE: ", hasDuplicates(noDups));
-
 
 
 // -------------------------------------------------------------------------
@@ -1548,8 +1490,6 @@ function getFibonacci(num) {
   return output
 }
 console.log(getFibonacci(15));
-
-
 
 
 // -------------------------------------------------------------------------
