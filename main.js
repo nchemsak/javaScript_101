@@ -1506,7 +1506,6 @@ console.log("sFact(4): ", sFact(4));
 // Since an array has no limit on how many items it can contain, we can have an "infinitely" large stack that we control ourself.
 
 
-
 (function() {
   var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
@@ -1576,8 +1575,6 @@ console.log("sFact(4): ", sFact(4));
   floodFill(map, 3, 3, null, 2);
   drawMap(map);
 })();
-
-
 
 
 // -------------------------------------------------------------------------
@@ -1714,8 +1711,6 @@ function fill(x, y) {
 function alreadyFilled(x, y) {
   // this functions checks to see if our square has been filled already
 }
-
-
 
 var obj = {
   a: 1,
