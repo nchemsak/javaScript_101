@@ -2,7 +2,6 @@
 var randomNumber = Math.floor(Math.random() * 6) + 1;
 console.log("random number: ", randomNumber);
 
-
 // if else
 var test = "look what I logged";
 if (test === "look what I sdlogged") {
@@ -15,11 +14,9 @@ if (test === "look what I sdlogged") {
 var hoursInYear = 24 * 365;
 console.log("Hours in Year", hoursInYear);
 
-
 // How many minutes in a decade?
 var minutesInDecade = (hoursInYear * 60) * 10
 console.log("Minutes in Decade", minutesInDecade);
-
 
 // How many seconds old am I?
 var secondsOld = (minutesInDecade * 60) * 3.5;
@@ -29,7 +26,6 @@ var myAge = 35;
 var secondsInYear = hoursInYear * 60 * 60;
 var myAgeInSeconds = secondsInYear * myAge;
 console.log("I am", myAgeInSeconds, "seconds old, calculated a different way");
-
 
 //time
 var oneSecond = 1000;
@@ -42,22 +38,12 @@ var decadeMinutes = oneYear * 10 / oneMinute;
 var ageSeconds = oneYear * 48 / oneSecond;
 var myAgeInYears = 35;
 
-
-// If I am older than some number, log "I am wise"
-// If ( 35 > 34 ) {
-//   console.log("I am wise");
-//  } else {
-//   console.log("I am green");
-// }
-
-
 //arrays
 var myArray = [2, "King", false, undefined];
 console.log("my junk drawer", myArray);
 console.log("array", myArray[1]);
 // myArray[1] = "Queen";
 // console.log("array ", myArray)
-
 
 myArray.push("hello");
 console.log(myArray);
@@ -83,8 +69,6 @@ var position = phrase.charAt(8);
 console.log(position); //will result in "b"
 
 
-
-
 var alpha = "abcdefghijklmnopqrstuvwxyz";
 var alphaPosition = alpha.indexOf("a");
 console.log(alphaPosition);
@@ -94,12 +78,10 @@ for (var i = 1; i <= 26; i++) {
   console.log(alphaPosition);
 }
 
-
 //replace method
 var phrase = "The lazy dog";
 var newPhrase = phrase.replace("lazy", "bounding");
 console.log(newPhrase);
-
 
 //this will replace individual characters, in this case replaces all "o" with "i"
 //the "g" in the .replace below stands for global and replaces ALL the "o".
