@@ -119,7 +119,6 @@ var divMadness = document.getElementsByTagName("div");
 console.log("divMadness", divMadness);
 
 
-
 // ############################################################################################
 // #                                        FOR LOOPS                                         #
 // ############################################################################################
@@ -367,20 +366,6 @@ fieldEl.addEventListener("keyup", function(event) {
 });
 
 
-//.classList - you can add and modify CSS styles to HTML with JavaScript
-// you can toggle, move, add
-//need examples here:
-
-///event bubbling
-
-
-// document.getElementById("card--1").addEventListener("click", function(event)
-// console.log("target: ", event.target);
-// console.log("Currenttarget: ", event.currenttarget);
-
-// )
-
-
 // ############################################################################################
 // #               strings                             #
 // ############################################################################################
@@ -457,7 +442,6 @@ var sortNumbers = numbers.sort(function(first, second) {
 console.log("sortNumbers: ", sortNumbers);
 
 
-
 //Join items in the array.  The output looks very similar, however it is now a string rather than an array
 var joinColors = colors.join(", ");
 console.log("join colors: ", joinColors, typeof(joinColors)); //the typeof just ends the output with if it is a string, number, etc.  I don't need this in actual code, just to show that it is a string
@@ -473,11 +457,9 @@ var newFruits = fruits.slice(1, 3); //this is like a range, a start and stop poi
 console.log("new fruit: ", newFruits);
 
 
-
 // ############################################################################################
 // #               Arrays  part 2                            #
 // ############################################################################################
-
 
 // The forEach method is equivalent to using a for loop to interate over items in the array
 
@@ -531,7 +513,6 @@ console.log("forloop method reversedColors: ", reversedColors);
 
 
 // The filter method ALSO creates a new array, which will be populated with items from the original aray that match a certain criteria.
-
 var fourLetters = colors.filter(function(color) {
   return color.length === 4;
 });
@@ -551,7 +532,6 @@ console.log("");
 
 //the reduce method will perform the same operation on each item in an array, but returns (reduces to) a single value as a result of the logic you write
 //for instance sum all the items in an array
-
 var numbers = [51, 10, 62, 4, 13, 9];
 var sum = numbers.reduce(function(hello, currr) {
   console.log("prev: ", hello, "curr: ", currr) //this just shows how it adds each item in the array to the previous item in the array
@@ -568,16 +548,13 @@ for (var i = 0; i < numbers.length; i++) {
   sum += numbers[i];
 }
 console.log("sum", sum);
-
-
 console.log("");
 
-
-// Chaining methods, also known as cascading refers to repeatedly calling one method after another on an object, in ONE continuous line of code.
 
 // ############################################################################################
 // #               CHAINING METHOD EXERCISE    USING ARRAYS TAUGHT ABOVE                     #
 // ############################################################################################
+// Chaining methods, also known as cascading refers to repeatedly calling one method after another on an object, in ONE continuous line of code.
 
 
 // Sort the numbers in the below array in DESCENDING order (10, 9, 8, 7, etc)
@@ -588,14 +565,12 @@ var integers2 = integers.sort(function(a, b) {
 console.log("DESCENDING integers: ", integers2);
 
 
-
 // Sort the numbers in ASCENDING order (1,2,3,4,5 etc)
 var integers = [13, 25, 6, 7, 34, 90, 667];
 var integers2 = integers.sort(function(a, b) {
   return a - b;
 });
 console.log("ASCENDING integers: ", integers2);
-
 
 
 // //Remove integers greater than a certain number
@@ -627,7 +602,6 @@ var integers2 = integers.map(function(num) {
 console.log("Multiply by 2 and subtract 1: ", integers2);
 
 
-
 // //output the sum of all the resulting numbers (using all the above methods in a row)
 var integers = [13, 25, 6, 7, 34, 90, 667];
 var integers2 = integers
@@ -646,8 +620,6 @@ var integers2 = integers
 console.log("chaining sum: ", integers2);
 
 
-
-
 function countNumberInArray(array, number) {
   let count = 0;
   for (var i = 0; i < array.length; i++) {
@@ -657,6 +629,7 @@ function countNumberInArray(array, number) {
   }
   return count;
 }
+
 
 function createNewArray(array, number) {
   let count = 0;
